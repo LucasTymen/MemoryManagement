@@ -200,8 +200,10 @@ the tab crashing.
 
 When you don’t have enough memory allowed for Node, you might see a fatal error message:
 
+
 ==== JS stack trace =========================================
 FATAL ERROR: CALL_AND_RETRY_LAST Allocation failed - JavaScript heap out of memory
+
 
 While that error can be resolved by allocating more memory to your application in Node, that’s not really possible for
 frontend apps because that would equate to requiring end users to download more RAM. Even though memory leaks can be
@@ -317,4 +319,30 @@ Review
 There’s a lot to learn about memory management in JavaScript . So far, you’ve learned about the different data
 structures that store memory in JavaScript and what type of values they store, the memory life cycle, plus memory leaks
 and how to spot them. Next we’ll dive into debugging memory issues using browser tools.
+
+========================================================================================================================
+======================================================   QUIZZ   =======================================================
+========================================================================================================================
+
+Explain how JavaScript uses the stack and heap to manage memory.
+Your response
+
+when executing the code, the functions, datas and objects are stores in the stack, and objects referenced here in the
+heap and once used, it is wept and garbaged cleaned untill it is empty.
+Our answer
+
+The stack is used for static storage, where the size of an object is known when the code is compiled. Since the size is
+known, a fixed amount of data is reserved for the object, and the stack remains ordered.
+
+The heap provides dynamic memory allocation at runtime for data types that don’t have a fixed size, like objects and
+functions. These are reference values and we keep track of where to find them in the unstructured heap using a
+fixed-size reference in the stack.
+
+Why this answer?
+
+This solution explains how the stack uses static storage while the heap uses an unstructured format for dynamic memory
+allocation
+
+========================================================================================================================
+
 */
