@@ -320,6 +320,7 @@ There’s a lot to learn about memory management in JavaScript . So far, you’v
 structures that store memory in JavaScript and what type of values they store, the memory life cycle, plus memory leaks
 and how to spot them. Next we’ll dive into debugging memory issues using browser tools.
 
+
 ========================================================================================================================
 ======================================================   QUIZZ   =======================================================
 ========================================================================================================================
@@ -344,5 +345,39 @@ This solution explains how the stack uses static storage while the heap uses an 
 allocation
 
 ========================================================================================================================
+Explain the differences between the two algorithms that JavaScript uses for garbage collection.
+Your response
 
+Garbage collection refers to the process of clearing memory. The JavaScript engine manages garbage collection using two
+key algorithms:
+
+Reference-counting => as any objet's reference counts to one and increasinglygrow  when used, the process cleans it and
+remove the outcome untill no references is left in use.
+
+Mark-and-sweep : The Mark-and-Sweep algorithm runs periodically and starts at the root of your code, the global object.
+From the root, it’ll “sweep” across your code to find and mark anything that is “reachable” by traversing across all of
+the variables. The mark is generally something like a boolean. After that process, any of the variables that are
+unmarked
+
+Our answer
+
+With the reference-counting algorithm, if a reference count for an object drops down to zero, there are no more
+references to the object in your program, so the JavaScript engine can destroy the object and garbage collect any memory
+it was using.
+
+The Mark-and-Sweep algorithm, meanwhile, runs periodically and starts at the root of your code, the global object. From
+the root, it’ll “sweep” across your code to find and mark anything that is “reachable” by traversing across all of the
+variables.
+
+After that process, any of the variables that are unmarked (and therefore were not reachable) will be garbage collected
+during the sweep phase.
+
+Why this answer?
+
+These are the primary algorithms used by browsers to clear memory. This answer explains how the reference-counting
+algorithm counts references in general and how it can result in the circular reference issue. It then explains how the
+Mark-and-Sweep algorithm has a stronger approach since it traverses nodes to see which are ‘reachable’ at any given
+point in time.
+
+========================================================================================================================
 */
