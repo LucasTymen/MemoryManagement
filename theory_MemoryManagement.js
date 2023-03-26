@@ -103,8 +103,10 @@ During execution, the arguments are passed by value or reference. When you pass 
 to the argument within the function the same as it would be if you assigned a string to another variable, which means a
 new version of the string is created.
 */
+
 let str = "Hi";
 let str2 = str;
+
 /*
 In the snippet, str and str2 are two separate primitives, and both are saved in the stack with a fixed amount of memory
 allocation to store the string “Hi”. There are two separate versions of the string “Hi”.
