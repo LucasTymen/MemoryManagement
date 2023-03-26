@@ -42,7 +42,7 @@ object itself.
 */
 
 const cat = {
-    name: "Jupiter"
+  name: "Jupiter"
 }
 
 const pets = ["Jupiter", "Moshi", "Hercules"]
@@ -115,12 +115,12 @@ original object will be modified, since both the original variable and the funct
 the same object in memory.
 */
 let aaliyah = {
-    name: "Aaliyah"
+  name: "Aaliyah"
 }
 
 function nameObjectModification(obj, name) {
-    obj.name = name;
-    return obj;
+  obj.name = name;
+  return obj;
 }
 
 let sarah = nameObjectModification(aaliyah, "Sarah");
@@ -175,7 +175,7 @@ object in your program, so the JavaScript engine can mark that memory block as f
 utilize and overwrite the block.
 */
 let monument = {
-   name: "Eiffel Tower"
+  name: "Eiffel Tower"
 };
 monument = "Golden Gate Bridge";
 /*
@@ -222,16 +222,16 @@ avoid them. Later, we’ll learn how to debug memory leaks using browser tools.
 Messy Closures
 */
 function bigObjMaker() {
-    const bigObj = {};
-    return (key, val) => {
-        bigObj[key] = val;
-        console.log(bigObj);
-    }
+  const bigObj = {};
+  return (key, val) => {
+    bigObj[key] = val;
+    console.log(bigObj);
+  }
 }
 let bigMemoryUser = bigObjMaker();
 
-Array(1000).fill(1).map((x,i) => {
-    bigMemoryUser(i, i);
+Array(1000).fill(1).map((x, i) => {
+  bigMemoryUser(i, i);
 });
 /*
 In the example, the closure over the bigObj object keeps the memory in use, even after bigMemoryUser() finishes
@@ -245,12 +245,12 @@ timer or callback that references nodes or memory that your program doesn’t ne
 active, anything it is referencing can’t be garbage collected.
 */
 function cb() {
-    let count = 0;
+  let count = 0;
 
-    return function() {
-         count++;
-         console.log(count);
-    }
+  return function () {
+    count++;
+    console.log(count);
+  }
 }
 
 setInterval(cb(), 1000);
@@ -269,8 +269,8 @@ Another scenario to watch out for is the existence of anonymous functions when y
 */
 const lotsOfMemory = "Imagine this is a value that uses a lot of memory"
 
-document.addEventListener('scroll', function() {
- cb(lotsOfMemory);
+document.addEventListener('scroll', function () {
+  cb(lotsOfMemory);
 });
 /*
 In the example, the lotsOfMemory string will be stored in the closure of the anonymous function that is called on scroll
@@ -296,9 +296,9 @@ function helloWorld() {
   // below greeting does not use a `let`, `const` or `var` statement to
   // declare the variable, so it's added to the global object after we
   // call `helloWorld()`
-   greeting = "Hello world";
+  greeting = "Hello world";
 
-// This also leaks into the global `this`
+  // This also leaks into the global `this`
   this.greeting2 = "Goodbye!";
 }
 
@@ -411,18 +411,18 @@ my code :
 */
 
 function buildMassiveString() {
-    let massiveString = Array(1000).fill("STRING").join();
+  let massiveString = Array(1000).fill("STRING").join();
 }
 buildMassiveString();
 
-let jin = {role: "vocalist"}
-let suga = {role: "rapper"}
-let jHope = {role: "rapper"}
-let rm = {role: "lead and rapper"}
-let jimin = {role: "vocalist"}
-let v = {role: "vocalist"}
-let v2 = {role: "co vocalist"}
-let jungkook = {role: "vocalist"}
+let jin = { role: "vocalist" }
+let suga = { role: "rapper" }
+let jHope = { role: "rapper" }
+let rm = { role: "lead and rapper" }
+let jimin = { role: "vocalist" }
+let v = { role: "vocalist" }
+let v2 = { role: "co vocalist" }
+let jungkook = { role: "vocalist" }
 
 rm.laughingBuddy = jin
 suga.bestie = jHope
